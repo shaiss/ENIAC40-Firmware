@@ -287,7 +287,7 @@ It also can add a delay to wait for spindle to run on full speed.
 #define X_MIN_POS 0
 #define Y_MIN_POS 0
 #define Z_MIN_POS 0
-#define DISTORTION_CORRECTION 0
+#define DISTORTION_CORRECTION 1
 #define DISTORTION_CORRECTION_POINTS 5
 #define DISTORTION_CORRECTION_R 100
 #define DISTORTION_PERMANENT 1
@@ -297,8 +297,8 @@ It also can add a delay to wait for spindle to run on full speed.
 #define DISTORTION_EXTRAPOLATE_CORNERS 0
 #define DISTORTION_XMIN 10
 #define DISTORTION_YMIN 10
-#define DISTORTION_XMAX 190
-#define DISTORTION_YMAX 190
+#define DISTORTION_XMAX 385
+#define DISTORTION_YMAX 415
 
 // ##########################################################################################
 // ##                           Movement settings                                          ##
@@ -384,9 +384,9 @@ It also can add a delay to wait for spindle to run on full speed.
 #define ACK_WITH_LINENUMBER 1
 #define WAITING_IDENTIFIER "wait"
 #define ECHO_ON_EXECUTE 1
-#define EEPROM_MODE 1
+#define EEPROM_MODE 3
 #undef PS_ON_PIN
-#define PS_ON_PIN -1 //ORIG_PS_ON_PIN
+#define PS_ON_PIN ORIG_PS_ON_PIN
 #define JSON_OUTPUT 0
 
 /* ======== Servos =======
@@ -414,31 +414,31 @@ WARNING: Servos can draw a considerable amount of current. Make sure your system
 #define Z_PROBE_Z_OFFSET 0
 #define Z_PROBE_Z_OFFSET_MODE 0
 #define UI_BED_COATING 0
-#define FEATURE_Z_PROBE 0
+#define FEATURE_Z_PROBE 1
 #define Z_PROBE_BED_DISTANCE 10
-#define Z_PROBE_PIN -1
-#define Z_PROBE_PULLUP 0
+#define Z_PROBE_PIN ORIG_X_MAX_PIN
+#define Z_PROBE_PULLUP 1
 #define Z_PROBE_ON_HIGH 0
-#define Z_PROBE_X_OFFSET 0
-#define Z_PROBE_Y_OFFSET 0
+#define Z_PROBE_X_OFFSET 37.5
+#define Z_PROBE_Y_OFFSET 62.95
 #define Z_PROBE_WAIT_BEFORE_TEST 0
-#define Z_PROBE_SPEED 2
-#define Z_PROBE_XY_SPEED 150
-#define Z_PROBE_SWITCHING_DISTANCE 1
-#define Z_PROBE_REPETITIONS 1
-#define Z_PROBE_HEIGHT 40
-#define Z_PROBE_START_SCRIPT ""
-#define Z_PROBE_FINISHED_SCRIPT ""
+#define Z_PROBE_SPEED 6
+#define Z_PROBE_XY_SPEED 200
+#define Z_PROBE_SWITCHING_DISTANCE 2
+#define Z_PROBE_REPETITIONS 2
+#define Z_PROBE_HEIGHT 1
+#define Z_PROBE_START_SCRIPT "G28 X0 Y0"
+#define Z_PROBE_FINISHED_SCRIPT "G28 X0 Y0"
 #define Z_PROBE_REQUIRES_HEATING 0
 #define Z_PROBE_MIN_TEMPERATURE 150
 #define FEATURE_AUTOLEVEL 1
-#define Z_PROBE_X1 20
-#define Z_PROBE_Y1 20
-#define Z_PROBE_X2 160
-#define Z_PROBE_Y2 20
-#define Z_PROBE_X3 100
-#define Z_PROBE_Y3 160
-#define BED_LEVELING_METHOD 0
+#define Z_PROBE_X1 10
+#define Z_PROBE_Y1 10
+#define Z_PROBE_X2 375
+#define Z_PROBE_Y2 10
+#define Z_PROBE_X3 10
+#define Z_PROBE_Y3 380
+#define BED_LEVELING_METHOD 1
 #define BED_CORRECTION_METHOD 0
 #define BED_LEVELING_GRID_SIZE 5
 #define BED_LEVELING_REPETITIONS 5
@@ -739,7 +739,7 @@ Values must be in range 1..255
     "servo3Pin": -1,
     "featureWatchdog": "1",
     "hasHeatedBed": "0",
-    "enableZProbing": "0",
+    "enableZProbing": "1",
     "extrudeMaxLength": 160,
     "homeOrder": "HOME_ORDER_XYZ",
     "featureController": 11,
@@ -847,27 +847,27 @@ Values must be in range 1..255
     "fanThermoThermistorPin": -1,
     "fanThermoThermistorType": 14,
     "scalePidToMax": 0,
-    "zProbePin": -1,
+    "zProbePin": "ORIG_Z_MIN_PIN",
     "zProbeBedDistance": 10,
-    "zProbePullup": "0",
+    "zProbePullup": "1",
     "zProbeOnHigh": "0",
-    "zProbeXOffset": 0,
-    "zProbeYOffset": 0,
+    "zProbeXOffset": 37.5,
+    "zProbeYOffset": 62.95,
     "zProbeWaitBeforeTest": "0",
-    "zProbeSpeed": 2,
-    "zProbeXYSpeed": 150,
-    "zProbeHeight": 40,
-    "zProbeStartScript": "",
-    "zProbeFinishedScript": "",
+    "zProbeSpeed": 6,
+    "zProbeXYSpeed": 200,
+    "zProbeHeight": 1,
+    "zProbeStartScript": "G28 X0 Y0",
+    "zProbeFinishedScript": "G28 X0 Y0",
     "featureAutolevel": "1",
-    "zProbeX1": 20,
-    "zProbeY1": 20,
-    "zProbeX2": 160,
-    "zProbeY2": 20,
-    "zProbeX3": 100,
-    "zProbeY3": 160,
-    "zProbeSwitchingDistance": 1,
-    "zProbeRepetitions": 1,
+    "zProbeX1": 10,
+    "zProbeY1": 10,
+    "zProbeX2": 375,
+    "zProbeY2": 10,
+    "zProbeX3": 10,
+    "zProbeY3": 415,
+    "zProbeSwitchingDistance": 2,
+    "zProbeRepetitions": 2,
     "sdSupport": "1",
     "sdCardDetectPin": -1,
     "sdCardDetectInverted": "0",
@@ -902,7 +902,7 @@ Values must be in range 1..255
     "retractOnPause": 2,
     "pauseStartCommands": "",
     "pauseEndCommands": "",
-    "distortionCorrection": "0",
+    "distortionCorrection": "1",
     "distortionCorrectionPoints": 5,
     "distortionCorrectionR": 100,
     "distortionPermanent": "1",
@@ -911,9 +911,9 @@ Values must be in range 1..255
     "distortionEndDegrade": 1,
     "distortionExtrapolateCorners": "0",
     "distortionXMin": 10,
-    "distortionXMax": 190,
+    "distortionXMax": 385,
     "distortionYMin": 10,
-    "distortionYMax": 190,
+    "distortionYMax": 415,
     "sdRunOnStop": "",
     "sdStopHeaterMotorsOnStop": "1",
     "featureRetraction": "1",
@@ -1055,7 +1055,7 @@ Values must be in range 1..255
     "cncDirectionCW": "1",
     "startupGCode": "",
     "jsonOutput": "0",
-    "bedLevelingMethod": 0,
+    "bedLevelingMethod": 1,
     "bedCorrectionMethod": 0,
     "bedLevelingGridSize": 5,
     "bedLevelingRepetitions": 5,
