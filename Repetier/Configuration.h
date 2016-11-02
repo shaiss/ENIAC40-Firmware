@@ -157,7 +157,7 @@
 
 // ############# Heated bed configuration ########################
 
-#define HAVE_HEATED_BED 1
+#define HAVE_HEATED_BED 0
 #define HEATED_BED_MAX_TEMP 40
 #define SKIP_M190_IF_WITHIN 3
 #define HEATED_BED_SENSOR_TYPE 1
