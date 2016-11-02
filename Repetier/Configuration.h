@@ -53,6 +53,8 @@
 #define FAN_THERMO_MAX_TEMP 60
 #define FAN_THERMO_THERMISTOR_PIN -1
 #define FAN_THERMO_THERMISTOR_TYPE 14
+#undef Z_MIN_PIN
+#define Z_MIN_PIN -1
 
 //#define EXTERNALSERIAL  use Arduino serial library instead of build in. Requires more ram, has only 63 byte input buffer.
 // Uncomment the following line if you are using Arduino compatible firmware made for Arduino version earlier then 1.0
@@ -235,8 +237,8 @@ It also can add a delay to wait for spindle to run on full speed.
 #define ENDSTOP_Y_MIN_INVERTING true
 #define MIN_HARDWARE_ENDSTOP_Y true
 #define ENDSTOP_PULLUP_Z_MIN true
-#define ENDSTOP_Z_MIN_INVERTING true
-#define MIN_HARDWARE_ENDSTOP_Z true
+#define ENDSTOP_Z_MIN_INVERTING false
+#define MIN_HARDWARE_ENDSTOP_Z false
 #define ENDSTOP_PULLUP_X_MAX true
 #define ENDSTOP_X_MAX_INVERTING false
 #define MAX_HARDWARE_ENDSTOP_X false
@@ -244,16 +246,16 @@ It also can add a delay to wait for spindle to run on full speed.
 #define ENDSTOP_Y_MAX_INVERTING false
 #define MAX_HARDWARE_ENDSTOP_Y false
 #define ENDSTOP_PULLUP_Z_MAX true
-#define ENDSTOP_Z_MAX_INVERTING false
-#define MAX_HARDWARE_ENDSTOP_Z false
+#define ENDSTOP_Z_MAX_INVERTING true
+#define MAX_HARDWARE_ENDSTOP_Z true
 #define max_software_endstop_r true
 
 #define min_software_endstop_x false
 #define min_software_endstop_y false
-#define min_software_endstop_z false
+#define min_software_endstop_z true
 #define max_software_endstop_x true
 #define max_software_endstop_y true
-#define max_software_endstop_z true
+#define max_software_endstop_z false
 #define ENDSTOP_X_BACK_MOVE 5
 #define ENDSTOP_Y_BACK_MOVE 5
 #define ENDSTOP_Z_BACK_MOVE 2
@@ -280,10 +282,10 @@ It also can add a delay to wait for spindle to run on full speed.
 #define INVERT_Z_DIR 0
 #define X_HOME_DIR -1
 #define Y_HOME_DIR -1
-#define Z_HOME_DIR -1
+#define Z_HOME_DIR 1
 #define X_MAX_LENGTH 395
 #define Y_MAX_LENGTH 425
-#define Z_MAX_LENGTH 385
+#define Z_MAX_LENGTH 370
 #define X_MIN_POS 0
 #define Y_MIN_POS 0
 #define Z_MIN_POS 0
@@ -298,7 +300,7 @@ It also can add a delay to wait for spindle to run on full speed.
 #define DISTORTION_XMIN 10
 #define DISTORTION_YMIN 10
 #define DISTORTION_XMAX 385
-#define DISTORTION_YMAX 415
+#define DISTORTION_YMAX 385
 
 // ##########################################################################################
 // ##                           Movement settings                                          ##
@@ -384,7 +386,7 @@ It also can add a delay to wait for spindle to run on full speed.
 #define ACK_WITH_LINENUMBER 1
 #define WAITING_IDENTIFIER "wait"
 #define ECHO_ON_EXECUTE 1
-#define EEPROM_MODE 3
+#define EEPROM_MODE 4
 #undef PS_ON_PIN
 #define PS_ON_PIN ORIG_PS_ON_PIN
 #define JSON_OUTPUT 0
@@ -415,8 +417,8 @@ WARNING: Servos can draw a considerable amount of current. Make sure your system
 #define Z_PROBE_Z_OFFSET_MODE 0
 #define UI_BED_COATING 0
 #define FEATURE_Z_PROBE 1
-#define Z_PROBE_BED_DISTANCE 10
-#define Z_PROBE_PIN ORIG_X_MAX_PIN
+#define Z_PROBE_BED_DISTANCE 8
+#define Z_PROBE_PIN ORIG_Z_MIN_PIN
 #define Z_PROBE_PULLUP 1
 #define Z_PROBE_ON_HIGH 0
 #define Z_PROBE_X_OFFSET 37.5
@@ -426,7 +428,7 @@ WARNING: Servos can draw a considerable amount of current. Make sure your system
 #define Z_PROBE_XY_SPEED 200
 #define Z_PROBE_SWITCHING_DISTANCE 2
 #define Z_PROBE_REPETITIONS 2
-#define Z_PROBE_HEIGHT 1
+#define Z_PROBE_HEIGHT 3
 #define Z_PROBE_START_SCRIPT "G28 X0 Y0"
 #define Z_PROBE_FINISHED_SCRIPT "G28 X0 Y0"
 #define Z_PROBE_REQUIRES_HEATING 0
@@ -436,11 +438,11 @@ WARNING: Servos can draw a considerable amount of current. Make sure your system
 #define Z_PROBE_Y1 10
 #define Z_PROBE_X2 375
 #define Z_PROBE_Y2 10
-#define Z_PROBE_X3 10
+#define Z_PROBE_X3 200
 #define Z_PROBE_Y3 380
-#define BED_LEVELING_METHOD 1
+#define BED_LEVELING_METHOD 0
 #define BED_CORRECTION_METHOD 0
-#define BED_LEVELING_GRID_SIZE 5
+#define BED_LEVELING_GRID_SIZE 4
 #define BED_LEVELING_REPETITIONS 5
 #define BED_MOTOR_1_X 0
 #define BED_MOTOR_1_Y 0
@@ -607,10 +609,10 @@ Values must be in range 1..255
     "uiController": 0,
     "xMinEndstop": 1,
     "yMinEndstop": 1,
-    "zMinEndstop": 1,
+    "zMinEndstop": 0,
     "xMaxEndstop": 0,
     "yMaxEndstop": 0,
-    "zMaxEndstop": 0,
+    "zMaxEndstop": 1,
     "motherboard": 33,
     "driveSystem": 1,
     "xMaxSpeed": 200,
@@ -654,7 +656,7 @@ Values must be in range 1..255
     "zMinPos": 0,
     "xLength": 395,
     "yLength": 425,
-    "zLength": 385,
+    "zLength": 70,
     "alwaysCheckEndstops": "1",
     "disableX": "0",
     "disableY": "0",
@@ -662,7 +664,7 @@ Values must be in range 1..255
     "disableE": "0",
     "xHomeDir": "-1",
     "yHomeDir": "-1",
-    "zHomeDir": "-1",
+    "zHomeDir": "1",
     "xEndstopBack": 1,
     "yEndstopBack": 1,
     "zEndstopBack": 0,
@@ -880,7 +882,7 @@ Values must be in range 1..255
     "zEndstopRetestFactor": 3,
     "xMinPin": "ORIG_X_MIN_PIN",
     "yMinPin": "ORIG_Y_MIN_PIN",
-    "zMinPin": "ORIG_Z_MIN_PIN",
+    "zMinPin": -1,
     "xMaxPin": "ORIG_X_MAX_PIN",
     "yMaxPin": "ORIG_Y_MAX_PIN",
     "zMaxPin": "ORIG_Z_MAX_PIN",
@@ -1057,7 +1059,7 @@ Values must be in range 1..255
     "jsonOutput": "0",
     "bedLevelingMethod": 1,
     "bedCorrectionMethod": 0,
-    "bedLevelingGridSize": 5,
+    "bedLevelingGridSize": 4,
     "bedLevelingRepetitions": 5,
     "bedMotor1X": 0,
     "bedMotor1Y": 0,
