@@ -115,7 +115,7 @@
 #define EXT0_EXTRUDER_COOLER_PIN -1
 #define EXT0_EXTRUDER_COOLER_SPEED 255
 #define EXT0_DECOUPLE_TEST_PERIOD 24000
-#define EXT0_JAM_PIN ORIG_X_MIN_PIN
+#define EXT0_JAM_PIN ORIG_X_MAX_PIN
 #define EXT0_JAM_PULLUP 1
 
 #define FEATURE_RETRACTION 1
@@ -611,7 +611,7 @@ Values must be in range 1..255
             },
             "advanceBacklashSteps": 0,
             "decoupleTestPeriod": 24,
-            "jamPin": "ORIG_X_MIN_PIN",
+            "jamPin": "ORIG_X_MAX_PIN",
             "jamPullup": "1",
             "mirror": "0",
             "invert2": "0",
